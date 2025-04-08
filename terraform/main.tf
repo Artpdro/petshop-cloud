@@ -12,7 +12,6 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
 }
 
-# Substitua azurerm_app_service_plan por azurerm_service_plan
 resource "azurerm_service_plan" "plan" {
   name                = "petshop-plan-${random_id.suffix.hex}"
   location            = azurerm_resource_group.rg.location
@@ -21,7 +20,6 @@ resource "azurerm_service_plan" "plan" {
   sku_name            = "B1"  # Basic tier
 }
 
-# Atualize para azurerm_linux_web_app (substituto moderno do azurerm_app_service)
 resource "azurerm_linux_web_app" "app" {
   name                = "petshop-app-${random_id.suffix.hex}"
   location            = azurerm_resource_group.rg.location
